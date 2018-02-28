@@ -1,0 +1,49 @@
+<%= form_for(@tenant_bill) do |f| %>
+  <% if @tenant_bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tenant_bill.errors.count, "error") %> prohibited this tenant_bill from being saved:</h2>
+
+      <ul>
+      <% @tenant_bill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tenant_id %><br>
+    <%= f.number_field :tenant_id %>
+  </div>
+  <div class="field">
+    <%= f.label :total_vcpu %><br>
+    <%= f.text_field :total_vcpu %>
+  </div>
+  <div class="field">
+    <%= f.label :total_ram %><br>
+    <%= f.text_field :total_ram %>
+  </div>
+  <div class="field">
+    <%= f.label :total_vdisk %><br>
+    <%= f.text_field :total_vdisk %>
+  </div>
+  <div class="field">
+    <%= f.label :bill_month %><br>
+    <%= f.datetime_select :bill_month %>
+  </div>
+  <div class="field">
+    <%= f.label :totoal_usage %><br>
+    <%= f.text_field :totoal_usage %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :enabled %><br>
+    <%= f.check_box :enabled %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

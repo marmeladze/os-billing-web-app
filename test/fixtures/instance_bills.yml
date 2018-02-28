@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  total_vcpu: 1.5
+  total_ram: 1.5
+  total_vdisk: 1.5
+  total_cost: 1.5
+  enabled: false
+
+two:
+  name: MyString
+  total_vcpu: 1.5
+  total_ram: 1.5
+  total_vdisk: 1.5
+  total_cost: 1.5
+  enabled: false

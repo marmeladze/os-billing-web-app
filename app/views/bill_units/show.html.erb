@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vcpu:</strong>
+  <%= @bill_unit.vcpu %>
+</p>
+
+<p>
+  <strong>Ram:</strong>
+  <%= @bill_unit.ram %>
+</p>
+
+<p>
+  <strong>Vdisk:</strong>
+  <%= @bill_unit.vdisk %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @bill_unit.date %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @bill_unit.enabled %>
+</p>
+
+<%= link_to 'Edit', edit_bill_unit_path(@bill_unit) %> |
+<%= link_to 'Back', bill_units_path %>

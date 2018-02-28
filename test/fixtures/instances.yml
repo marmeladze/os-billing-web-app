@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  cpu: 1
+  ram: 1
+  disk: 1
+
+two:
+  uid: MyString
+  cpu: 1
+  ram: 1
+  disk: 1

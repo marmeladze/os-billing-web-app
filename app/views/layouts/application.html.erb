@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Openstack Billing</title>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="no-print">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <nav class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+               <li> <%= link_to "Instances", instances_path %></li>
+               <li> <%= link_to "Bill Units", bill_units_path %></li>
+               <li> <%= link_to "Tenant Bills", tenant_bills_path %></li>
+               <li> <%= link_to "Instance Bills", instance_bills_path %></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+ 
+    <div class="row">
+      <div class="col-md-12">
+        <%= yield %>            
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

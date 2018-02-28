@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tenant_id: 1
+  total_vcpu: 1.5
+  total_ram: 1.5
+  total_vdisk: 1.5
+  bill_month: 2018-02-28 16:08:08
+  totoal_usage: 1.5
+  status: 
+  enabled: false
+
+two:
+  tenant_id: 1
+  total_vcpu: 1.5
+  total_ram: 1.5
+  total_vdisk: 1.5
+  bill_month: 2018-02-28 16:08:08
+  totoal_usage: 1.5
+  status: 
+  enabled: false

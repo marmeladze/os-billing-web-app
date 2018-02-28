@@ -1,0 +1,37 @@
+<%= form_for(@bill_unit) do |f| %>
+  <% if @bill_unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill_unit.errors.count, "error") %> prohibited this bill_unit from being saved:</h2>
+
+      <ul>
+      <% @bill_unit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vcpu %><br>
+    <%= f.text_field :vcpu %>
+  </div>
+  <div class="field">
+    <%= f.label :ram %><br>
+    <%= f.text_field :ram %>
+  </div>
+  <div class="field">
+    <%= f.label :vdisk %><br>
+    <%= f.text_field :vdisk %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :enabled %><br>
+    <%= f.check_box :enabled %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

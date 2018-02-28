@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @instance.uid %>
+</p>
+
+<p>
+  <strong>Cpu:</strong>
+  <%= @instance.cpu %>
+</p>
+
+<p>
+  <strong>Ram:</strong>
+  <%= @instance.ram %>
+</p>
+
+<p>
+  <strong>Disk:</strong>
+  <%= @instance.disk %>
+</p>
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>

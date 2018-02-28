@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bill Units</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Vcpu</th>
+      <th>Ram</th>
+      <th>Vdisk</th>
+      <th>Date</th>
+      <th>Enabled</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bill_units.each do |bill_unit| %>
+      <tr>
+        <td><%= bill_unit.vcpu %></td>
+        <td><%= bill_unit.ram %></td>
+        <td><%= bill_unit.vdisk %></td>
+        <td><%= bill_unit.date %></td>
+        <td><%= bill_unit.enabled %></td>
+        <td><%= link_to 'Show', bill_unit %></td>
+        <td><%= link_to 'Edit', edit_bill_unit_path(bill_unit) %></td>
+        <td><%= link_to 'Destroy', bill_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bill unit', new_bill_unit_path %>

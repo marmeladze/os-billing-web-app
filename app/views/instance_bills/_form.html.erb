@@ -1,0 +1,41 @@
+<%= form_for(@instance_bill) do |f| %>
+  <% if @instance_bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instance_bill.errors.count, "error") %> prohibited this instance_bill from being saved:</h2>
+
+      <ul>
+      <% @instance_bill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :total_vcpu %><br>
+    <%= f.text_field :total_vcpu %>
+  </div>
+  <div class="field">
+    <%= f.label :total_ram %><br>
+    <%= f.text_field :total_ram %>
+  </div>
+  <div class="field">
+    <%= f.label :total_vdisk %><br>
+    <%= f.text_field :total_vdisk %>
+  </div>
+  <div class="field">
+    <%= f.label :total_cost %><br>
+    <%= f.text_field :total_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :enabled %><br>
+    <%= f.check_box :enabled %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

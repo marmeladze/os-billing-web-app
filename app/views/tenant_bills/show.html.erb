@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @tenant_bill.tenant_id %>
+</p>
+
+<p>
+  <strong>Total vcpu:</strong>
+  <%= @tenant_bill.total_vcpu %>
+</p>
+
+<p>
+  <strong>Total ram:</strong>
+  <%= @tenant_bill.total_ram %>
+</p>
+
+<p>
+  <strong>Total vdisk:</strong>
+  <%= @tenant_bill.total_vdisk %>
+</p>
+
+<p>
+  <strong>Bill month:</strong>
+  <%= @tenant_bill.bill_month %>
+</p>
+
+<p>
+  <strong>Totoal usage:</strong>
+  <%= @tenant_bill.totoal_usage %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @tenant_bill.status %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @tenant_bill.enabled %>
+</p>
+
+<%= link_to 'Edit', edit_tenant_bill_path(@tenant_bill) %> |
+<%= link_to 'Back', tenant_bills_path %>

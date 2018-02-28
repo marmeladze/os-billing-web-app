@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Instance Bills</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total vcpu</th>
+      <th>Total ram</th>
+      <th>Total vdisk</th>
+      <th>Total cost</th>
+      <th>Enabled</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instance_bills.each do |instance_bill| %>
+      <tr>
+        <td><%= instance_bill.name %></td>
+        <td><%= instance_bill.total_vcpu %></td>
+        <td><%= instance_bill.total_ram %></td>
+        <td><%= instance_bill.total_vdisk %></td>
+        <td><%= instance_bill.total_cost %></td>
+        <td><%= instance_bill.enabled %></td>
+        <td><%= link_to 'Show', instance_bill %></td>
+        <td><%= link_to 'Edit', edit_instance_bill_path(instance_bill) %></td>
+        <td><%= link_to 'Destroy', instance_bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instance bill', new_instance_bill_path %>

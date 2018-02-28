@@ -1,0 +1,33 @@
+<%= form_for(@instance) do |f| %>
+  <% if @instance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instance.errors.count, "error") %> prohibited this instance from being saved:</h2>
+
+      <ul>
+      <% @instance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uid %><br>
+    <%= f.text_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :cpu %><br>
+    <%= f.number_field :cpu %>
+  </div>
+  <div class="field">
+    <%= f.label :ram %><br>
+    <%= f.number_field :ram %>
+  </div>
+  <div class="field">
+    <%= f.label :disk %><br>
+    <%= f.number_field :disk %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
