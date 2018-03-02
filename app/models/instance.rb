@@ -1,7 +1,7 @@
 class Instance < ActiveRecord::Base
-  has_one :instance_detail
+  has_many :instance_detail
 
   def detail
-    instance_detail
+    instance_details.last
   end
 end

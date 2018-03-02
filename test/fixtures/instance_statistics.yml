@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_hours: 1.5
+  total_local_gb_usage: 1.5
+  total_memory_mb_usage: 1.5
+  total_vcpus_usage: 1.5
+  instance_id: 
+
+two:
+  total_hours: 1.5
+  total_local_gb_usage: 1.5
+  total_memory_mb_usage: 1.5
+  total_vcpus_usage: 1.5
+  instance_id: 

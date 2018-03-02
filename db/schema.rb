@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302082302) do
+ActiveRecord::Schema.define(version: 20180302133430) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 20180302082302) do
 
   add_index "instance_details", ["instance_id"], name: "index_instance_details_on_instance_id", using: :btree
 
+  create_table "instance_statistics", force: :cascade do |t|
+    t.float    "total_hours",           limit: 24
+    t.float    "total_local_gb_usage",  limit: 24
+    t.float    "total_memory_mb_usage", limit: 24
+    t.float    "total_vcpus_usage",     limit: 24
+    t.integer  "instance_id",           limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "instance_statistics", ["instance_id"], name: "index_instance_statistics_on_instance_id", using: :btree
+
   create_table "instances", force: :cascade do |t|
     t.string   "uid",        limit: 255
     t.integer  "cpu",        limit: 4
@@ -54,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180302082302) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "name",       limit: 255
+    t.string   "tenant_id",  limit: 255
   end
 
   create_table "tenant_bills", force: :cascade do |t|
@@ -70,4 +83,5 @@ ActiveRecord::Schema.define(version: 20180302082302) do
   end
 
   add_foreign_key "instance_details", "instances"
+  add_foreign_key "instance_statistics", "instances"
 end
