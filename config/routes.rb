@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :instance_details
   root 'instances#index' 
  
   resources :instances
