@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228142107) do
+ActiveRecord::Schema.define(version: 20180302082302) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 20180228142107) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "instance_details", force: :cascade do |t|
+    t.integer  "instance_id", limit: 4
+    t.string   "zone",        limit: 255
+    t.boolean  "state"
+    t.string   "status",      limit: 255
+    t.datetime "created"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "instance_details", ["instance_id"], name: "index_instance_details_on_instance_id", using: :btree
 
   create_table "instances", force: :cascade do |t|
     t.string   "uid",        limit: 255
@@ -57,4 +69,5 @@ ActiveRecord::Schema.define(version: 20180228142107) do
     t.datetime "updated_at",              null: false
   end
 
+  add_foreign_key "instance_details", "instances"
 end

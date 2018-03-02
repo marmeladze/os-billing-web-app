@@ -20,5 +20,26 @@
   <%= @instance.disk %>
 </p>
 
-<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<p>
+  <strong>Zone:</strong>
+  <%= @instance.detail.zone %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @instance.detail.status %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @instance.detail.running? %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @instance.detail.created %>
+</p>
+
+
+
 <%= link_to 'Back', instances_path %>
