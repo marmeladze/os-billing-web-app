@@ -1,44 +1,60 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3>Instance: <%= @instance.name %></h3></div>
+      <div class="panel-body">
+        <p>
+          <strong>Uid:</strong>
+          <%= @instance.uid %>
+        </p>
 
-<p>
-  <strong>Uid:</strong>
-  <%= @instance.uid %>
-</p>
+        <p>
+          <strong>Cpu:</strong>
+          <%= @instance.cpu %>
+        </p>
+        <p>
+          <strong>Ram:</strong>
+          <%= @instance.ram %>
+        </p>
 
-<p>
-  <strong>Cpu:</strong>
-  <%= @instance.cpu %>
-</p>
-<p>
-  <strong>Ram:</strong>
-  <%= @instance.ram %>
-</p>
+        <p>
+          <strong>Disk:</strong>
+          <%= @instance.disk %>
+        </p>
 
-<p>
-  <strong>Disk:</strong>
-  <%= @instance.disk %>
-</p>
+        <p>
+          <strong>Zone:</strong>
+          <%= @instance.detail.zone %>
+        </p>
 
-<p>
-  <strong>Zone:</strong>
-  <%= @instance.detail.zone %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @instance.detail.status %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @instance.detail.running? %>
-</p>
-
-<p>
-  <strong>Created:</strong>
-  <%= @instance.detail.created %>
-</p>
-
-
+        <p>
+          <strong>Status:</strong>
+          <%= @instance.detail.status %>
+        </p>
+        <p>
+          <strong>State:</strong>
+          <%= @instance.detail.running? %>
+        </p>
+        <p>
+          <strong>Created:</strong>
+          <%= @instance.detail.created %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3>Cpu stats: <%= @instance.name %></h3></div>
+      <div class="panel-body">
+        <p><strong>Highest</strong> <%= @instance.max_load_for_today %></p>
+        <p><strong>Lowest</strong> <%= @instance.min_load_for_today %></p>
+        <p><strong>Average</strong> <%= @instance.avg_load_for_today %></p>
+      </div> 
+    </div>
+  </div>
+</div>
+<div class="row">
+</div>
 
 <%= link_to 'Back', instances_path %>
