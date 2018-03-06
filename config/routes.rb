@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :cpu_loads
   resources :instance_details
   root 'instances#index' 
  

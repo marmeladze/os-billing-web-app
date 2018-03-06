@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302133430) do
+ActiveRecord::Schema.define(version: 20180305135145) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20180302133430) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  create_table "cpu_loads", force: :cascade do |t|
+    t.integer  "instance_id", limit: 4
+    t.float    "percentage",  limit: 24
+    t.datetime "observed_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "cpu_loads", ["instance_id"], name: "index_cpu_loads_on_instance_id", using: :btree
 
   create_table "instance_bills", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -82,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180302133430) do
     t.datetime "updated_at",              null: false
   end
 
+  add_foreign_key "cpu_loads", "instances"
   add_foreign_key "instance_details", "instances"
   add_foreign_key "instance_statistics", "instances"
 end

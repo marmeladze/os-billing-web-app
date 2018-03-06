@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instance:</strong>
+  <%= @cpu_load.instance %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @cpu_load.percentage %>
+</p>
+
+<p>
+  <strong>Observed at:</strong>
+  <%= @cpu_load.observed_at %>
+</p>
+
+<%= link_to 'Edit', edit_cpu_load_path(@cpu_load) %> |
+<%= link_to 'Back', cpu_loads_path %>
