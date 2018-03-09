@@ -1,6 +1,7 @@
 class Instance < ActiveRecord::Base
   has_many :instance_details
   has_many :cpu_loads
+  belongs_to :owner
 
   def detail
     instance_details.last
