@@ -1,31 +1,60 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Owners</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Uid</th>
-      <th>Email</th>
-      <th>Tenant</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @owners.each do |owner| %>
-      <tr>
-        <td><%= owner.uid %></td>
-        <td><%= owner.email %></td>
-        <td><%= owner.tenant %></td>
-        <td><%= link_to 'Show', owner %></td>
-        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-6">
+  </div>
+  <div class="col-md-2">
+  </div>  
+  <div class="col-md-2">
+    <input class="form-control input-sm" type="text" id="search" name="searcher" placeholder="Type something">    
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Tenant</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody id='owners-data'>
+        <% @owners.each do |owner| %>
+          <tr>
+            <td><%= owner.name %></td>
+            <td><%= owner.email %></td>
+            <td><%= owner.tenant %></td>
+            <td><%= link_to 'Show', owner %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>    
+  </div>
+</div>
 
-<%= link_to 'New Owner', new_owner_path %>
+
+<script type="text/javascript">
+  document.getElementById('search').addEventListener('keyup', function(evt){
+    var datarows = document.getElementById('owners-data').rows;
+    
+    if (evt.target.value.length == 0) {
+      Array.from(datarows).map(function(dr){
+        dr.style.display = "table-row";
+      });
+    }
+
+    if (evt.target.value.length > 1) {
+      Array.from(datarows).map(function(rw){
+        if(rw.innerText.indexOf(evt.target.value) < 0 ){
+          rw.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
+
