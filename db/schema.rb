@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309111045) do
+ActiveRecord::Schema.define(version: 20180309125327) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180309111045) do
     t.string   "tenant",     limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "name",       limit: 255
   end
 
   create_table "tenant_bills", force: :cascade do |t|
