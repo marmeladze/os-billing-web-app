@@ -1,6 +1,11 @@
 class Owner < ActiveRecord::Base
 
   def instances
-    Instances.where(owner_uid: uid)
+    Instance.where(owner_uid: uid)
   end
+
+  def volumes
+    Volume.where(owner_uid: uid)
+  end
+
 end

@@ -1,4 +1,11 @@
 class Volume < ActiveRecord::Base
-  belongs_to :instance
-  belongs_to :user
+
+  def instance
+    Instance.where(uid: instance_uid)
+  end
+
+  def owner
+    Owner.where(uid: owner_uid)
+  end
+
 end

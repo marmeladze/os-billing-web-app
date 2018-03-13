@@ -5,6 +5,10 @@ class Instance < ActiveRecord::Base
     Owner.find_by(uid: owner_uid)
   end
 
+  def volumes
+    Volume.where(instance_uid: uid)
+  end
+
   def max_load_for_today
   	cpu_loads.where("DATE(created_at) = DATE(?)", Time.now).maximum(:percentage)
   end
