@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :volumes
   resources :owners
   resources :cpu_loads
-  root 'instances#index' 
+  root 'owners#index' 
  
   resources :instances
   resources :tenant_bills
