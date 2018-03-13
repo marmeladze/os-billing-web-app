@@ -1,5 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+        <%= @owner.name %> / <%= @owner.email %>        			 
+      </div>
+			<div class="panel-body">
+			
+			</div>
+		</div>
+	</div>
+</div>
+
 <p>
   <strong>Uid:</strong>
   <%= @owner.uid %>
@@ -8,11 +22,6 @@
 <p>
   <strong>Email:</strong>
   <%= @owner.email %>
-</p>
-
-<p>
-  <strong>Tenant:</strong>
-  <%= @owner.tenant %>
 </p>
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |

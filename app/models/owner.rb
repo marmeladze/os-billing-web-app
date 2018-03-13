@@ -1,3 +1,6 @@
 class Owner < ActiveRecord::Base
-  has_many :instances
+
+  def instances
+    Instances.where(owner_uid: uid)
+  end
 end
