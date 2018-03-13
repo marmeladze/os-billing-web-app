@@ -7,15 +7,15 @@
 <div class="tab-content">
   <div id="alles" class="tab-pane fade in active">
     <h3>All</h3>
-    <%= render partial: "partials/partials/volumes_view", locals: {instances: @volumes} %>
+    <%= render partial: "partials/volumes_view", locals: {instances: @volumes} %>
   </div>
   <div id="available" class="tab-pane fade">
     <h3>Available</h3>
-    <%= render partial: "partials/partials/volumes_view", locals: {instances: @available} %>
+    <%= render partial: "partials/volumes_view", locals: {instances: @available} %>
   </div>
   <div id="in-use" class="tab-pane fade">
     <h3>Attached</h3>
-    <%= render partial: "partials/partials/volumes_view", locals: {instances: @attached} %>
+    <%= render partial: "partials/volumes_view", locals: {instances: @attached} %>
   </div>
 
 </div>
