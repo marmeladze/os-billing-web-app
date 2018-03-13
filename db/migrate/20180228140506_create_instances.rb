@@ -10,7 +10,7 @@ class CreateInstances < ActiveRecord::Migration
       t.string  :zone
       t.string  :status
       t.string  :state
-      t.creation :datetime
+      t.datetime :creation
 
       t.timestamps null: false
     end
