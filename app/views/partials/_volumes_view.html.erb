@@ -1,0 +1,25 @@
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Attached</th>
+      <th>Attached to</th>
+      <th>Creation</th>
+    </tr>
+  </thead>
+
+  <tbody id='volume-data'>
+    <% instances.each do |instance| %>
+      <tr>
+        <td><%= instance.uid %></td>
+        <td><%= instance.amount  %></td>
+        <td><%= instance.volume_type  %></td>
+        <td><%= instance.available ? "No" : "Yes"  %></td> 
+        <td><%= instance.instance.name %></td>
+        <td><%= instance.creation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

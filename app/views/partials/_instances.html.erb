@@ -8,18 +8,18 @@
 <div class="tab-content">
   <div id="all" class="tab-pane fade in active">
     <h3>All</h3>
-    <%= render partial: "partials/table_view", collection: @instances %>
+    <%= render partial: "partials/table_view", collection: @instances, as: :instances %>
   </div>
   <div id="active" class="tab-pane fade">
     <h3>Active</h3>
-    <%= render partial: "partials/table_view", collection: @active %>
+    <%= render partial: "partials/table_view", collection: @active, as: :instances %>
   </div>
   <div id="shutoff" class="tab-pane fade">
     <h3>Shutoff</h3>
-    <%= render partial: "partials/table_view", collection: @shutoff %>
+    <%= render partial: "partials/table_view", collection: @shutoff, as: :instances %>
   </div>
   <div id="suspended" class="tab-pane fade">
     <h3>Suspended</h3>
-    <%= render partial: "partials/table_view", collection: @suspended %>
+    <%= render partial: "partials/table_view", collection: @suspended, as: :instances %>
   </div>
 </div>

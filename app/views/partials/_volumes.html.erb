@@ -1,21 +1,21 @@
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#all">All</a></li>
+  <li class="active"><a data-toggle="tab" href="#alles">All</a></li>
   <li><a data-toggle="tab" href="#available">Available</a></li>
   <li><a data-toggle="tab" href="#in-use">Attached</a></li>
 </ul>
 
 <div class="tab-content">
-  <div id="all" class="tab-pane fade in active">
+  <div id="alles" class="tab-pane fade in active">
     <h3>All</h3>
-    <%= render partial: "partials/table_view", collection: @volumes %>
+    <%= render partial: "partials/partials/volumes_view", collection: @volumes, as: :instances %>
   </div>
   <div id="available" class="tab-pane fade">
     <h3>Available</h3>
-    <%= render partial: "partials/table_view", collection: @available %>
+    <%= render partial: "partials/partials/volumes_view", collection: @available, as: :instances %>
   </div>
   <div id="in-use" class="tab-pane fade">
     <h3>Attached</h3>
-    <%= render partial: "partials/table_view", collection: @attached %>
+    <%= render partial: "partials/partials/volumes_view", collection: @attached, as: :instances %>
   </div>
 
 </div>
