@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @ip_list.address %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @ip_list.type %>
+</p>
+
+<p>
+  <strong>Instance:</strong>
+  <%= @ip_list.instance %>
+</p>
+
+<%= link_to 'Edit', edit_ip_list_path(@ip_list) %> |
+<%= link_to 'Back', ip_lists_path %>

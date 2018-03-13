@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :ip_lists
+  resources :volumes
   resources :owners
   resources :cpu_loads
   resources :instance_details

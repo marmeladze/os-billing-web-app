@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309125327) do
+ActiveRecord::Schema.define(version: 20180313162839) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 20180309125327) do
 
   add_index "instances", ["owner_id"], name: "index_instances_on_owner_id", using: :btree
 
+  create_table "ip_lists", force: :cascade do |t|
+    t.string   "address",      limit: 255
+    t.string   "type",         limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "instance_uid", limit: 255
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string   "uid",        limit: 255
     t.string   "email",      limit: 255
@@ -102,6 +110,18 @@ ActiveRecord::Schema.define(version: 20180309125327) do
     t.boolean  "enabled"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "volumes", force: :cascade do |t|
+    t.string   "type",         limit: 255
+    t.integer  "amount",       limit: 4
+    t.boolean  "available"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.datetime "creation"
+    t.string   "owner_uid",    limit: 255
+    t.string   "instance_uid", limit: 255
+    t.string   "uid",          limit: 255
   end
 
   add_foreign_key "cpu_loads", "instances"
