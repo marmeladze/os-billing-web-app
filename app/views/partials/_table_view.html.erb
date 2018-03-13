@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
       <th>Uid</th>
@@ -8,6 +8,8 @@
       <th>Cpu</th>
       <th>Ram</th>
       <th>Disk</th>
+      <th>Zone</th>
+      <th>Creation</th>
     </tr>
   </thead>
 
@@ -21,6 +23,8 @@
         <td><%= instance.cpu %></td>
         <td><%= instance.ram %></td>
         <td><%= instance.disk %></td>
+        <td><%= instance.zone %></td>
+        <td><%= instance.creation %></td>
       </tr>
     <% end %>
   </tbody>

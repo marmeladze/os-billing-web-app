@@ -14,6 +14,9 @@ class OwnersController < ApplicationController
     @active = @owner.instance_by_status "ACTIVE"
     @suspended = @owner.instance_by_status "SUSPEND"
     @shutoff = @owner.instance_by_status "SHUTOFF"
+    @volumes = @owner.volumes
+    @available = @volumes.where(available: true)
+    @attached = @volumes.where(available: false)
   end
 
   # GET /owners/new

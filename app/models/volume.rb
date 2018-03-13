@@ -1,11 +1,11 @@
 class Volume < ActiveRecord::Base
 
   def instance
-    Instance.where(uid: instance_uid)
+    Instance.find_by(uid: instance_uid)
   end
 
   def owner
-    Owner.where(uid: owner_uid)
+    Owner.find_by(uid: owner_uid)
   end
 
 end
