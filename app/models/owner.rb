@@ -8,4 +8,8 @@ class Owner < ActiveRecord::Base
     Volume.where(owner_uid: uid)
   end
 
+  def instance_by_status status
+    instances.where(status: status)
+  end
+
 end

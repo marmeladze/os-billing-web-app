@@ -10,6 +10,10 @@ class OwnersController < ApplicationController
   # GET /owners/1
   # GET /owners/1.json
   def show
+    @instances = @owner.instances
+    @active = @owner.instance_by_status "ACTIVE"
+    @suspended = @owner.instance_by_status "SUSPEND"
+    @shutoff = @owner.instance_by_status "SHUTOFF"
   end
 
   # GET /owners/new

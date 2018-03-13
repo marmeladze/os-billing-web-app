@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="all">All</a></li>
+  <li><a data-toggle="tab" href="active">Running</a></li>
+  <li><a data-toggle="tab" href="shutoff">Shutoff</a></li>
+  <li><a data-toggle="tab" href="suspended">Suspended</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="all" class="tab-pane fade in active">
+    <h3>All</h3>
+    <%= render partial: "table_view", collection: @instances %>
+  </div>
+  <div id="active" class="tab-pane fade">
+    <h3>Active</h3>
+    <%= render partial: "table_view", collection: @active %>
+  </div>
+  <div id="shutoff" class="tab-pane fade">
+    <h3>Shutoff</h3>
+    <%= render partial: "table_view", collection: @shutoff %>
+  </div>
+  <div id="suspended" class="tab-pane fade">
+    <h3>Suspended</h3>
+    <%= render partial: "table_view", collection: @suspended %>
+  </div>
+</div>

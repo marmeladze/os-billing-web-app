@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Flavor</th>
+      <th>Cpu</th>
+      <th>Ram</th>
+      <th>Disk</th>
+    </tr>
+  </thead>
+
+  <tbody id='instance-data'>
+    <% @instances.each do |instance| %>
+      <tr>
+        <td><%= instance.uid %></td>
+        <td><%= instance.name  %></td>
+        <td><%= instance.image  %></td>
+        <td><%= instance.flavor  %></td> 
+        <td><%= instance.cpu %></td>
+        <td><%= instance.ram %></td>
+        <td><%= instance.disk %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
