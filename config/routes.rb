@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :volumes
   resources :owners
   resources :cpu_loads
-  resources :instance_details
   root 'instances#index' 
  
   resources :instances

@@ -1,0 +1,2 @@
+module CpuLoadsHelper
+end

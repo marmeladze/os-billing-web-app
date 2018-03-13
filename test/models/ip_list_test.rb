@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InstanceDetailTest < ActiveSupport::TestCase
+class IpListTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

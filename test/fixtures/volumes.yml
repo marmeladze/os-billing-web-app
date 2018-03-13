@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  amount: 1
+  available: false
+  instance_id: 
+  user_id: 
+
+two:
+  type: 
+  amount: 1
+  available: false
+  instance_id: 
+  user_id: 
