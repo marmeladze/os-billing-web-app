@@ -17,7 +17,7 @@
         <td><%= instance.amount  %></td>
         <td><%= instance.volume_type  %></td>
         <td><%= instance.available ? "No" : "Yes"  %></td> 
-        <td><%= instance.instance.name %></td>
+        <td><%= link_to instance.instance.name, instance_path(instance.instance) %></td>
         <td><%= instance.creation %></td>
       </tr>
     <% end %>

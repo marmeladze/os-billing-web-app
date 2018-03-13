@@ -9,6 +9,10 @@ class Instance < ActiveRecord::Base
     Volume.where(instance_uid: uid)
   end
 
+  def ip_list
+    IpList.where(instance_uid: uid)
+  end
+
   def max_load_for_today
   	cpu_loads.where("DATE(created_at) = DATE(?)", Time.now).maximum(:percentage)
   end

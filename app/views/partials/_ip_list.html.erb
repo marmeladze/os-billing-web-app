@@ -1,0 +1,17 @@
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+
+  <tbody id='ip-list-data'>
+    <% instances.each do |instance| %>
+      <tr>
+        <td><%= instance.address %></td>
+        <td><%= instance.volume_type  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

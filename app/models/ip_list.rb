@@ -1,3 +1,5 @@
 class IpList < ActiveRecord::Base
-  belongs_to :instance
+  def instance
+    Instance.find_by(uid: instance_uid)
+  end
 end

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading"><h3>Instance: <%= @instance.name %></h3></div>
       <div class="panel-body">
@@ -8,54 +8,39 @@
           <strong>Uid:</strong>
           <%= @instance.uid %>
         </p>
-
         <p>
-          <strong>Cpu:</strong>
-          <%= @instance.cpu %>
+          <strong>FLavor:</strong>
+          <%= @instance.flavor %>
         </p>
-        <p>
-          <strong>Ram:</strong>
-          <%= @instance.ram %>
-        </p>
-
-        <p>
-          <strong>Disk:</strong>
-          <%= @instance.disk %>
-        </p>
-
         <p>
           <strong>Zone:</strong>
-          <%= @instance.detail.zone %>
+          <%= @instance.zone %>
         </p>
-
         <p>
           <strong>Status:</strong>
-          <%= @instance.detail.status %>
-        </p>
-        <p>
-          <strong>State:</strong>
-          <%= @instance.detail.running? %>
+          <%= @instance.status %>
         </p>
         <p>
           <strong>Created:</strong>
-          <%= @instance.detail.created %>
+          <%= @instance.creation %>
         </p>
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="panel panel-primary">
-      <div class="panel-heading"><h3>Cpu stats: <%= @instance.name %></h3></div>
+      <div class="panel-heading"><h3>Volumes</h3></div>
       <div class="panel-body">
-        <p><strong>Highest</strong> <%= @instance.max_load_for_today %></p>
-        <p><strong>Lowest</strong> <%= @instance.min_load_for_today %></p>
-        <p><strong>Average</strong> <%= @instance.avg_load_for_today %></p>
-      </div> 
+        <%= render partial: "partials/volumes_view", locals: {instances: @instance.volumes} %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3>Ip Adresses</h3></div>
+      <div class="panel-body">
+        <%= render partial: "partials/ip_list", locals: {instances: @instance.ip_list} %>
+      </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <%= line_chart @instance.cpu_loads %>
-</div>
-
-<%= link_to 'Back', instances_path %>
