@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313174105) do
+ActiveRecord::Schema.define(version: 20180313182955) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -77,10 +77,8 @@ ActiveRecord::Schema.define(version: 20180313174105) do
     t.datetime "updated_at",             null: false
     t.string   "name",       limit: 255
     t.string   "tenant_id",  limit: 255
-    t.integer  "owner_id",   limit: 4
+    t.string   "owner_uid",  limit: 255
   end
-
-  add_index "instances", ["owner_id"], name: "index_instances_on_owner_id", using: :btree
 
   create_table "ip_lists", force: :cascade do |t|
     t.string   "address",      limit: 255
@@ -127,5 +125,4 @@ ActiveRecord::Schema.define(version: 20180313174105) do
   add_foreign_key "cpu_loads", "instances"
   add_foreign_key "instance_details", "instances"
   add_foreign_key "instance_statistics", "instances"
-  add_foreign_key "instances", "owners"
 end
