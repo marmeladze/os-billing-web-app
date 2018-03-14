@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313182955) do
+ActiveRecord::Schema.define(version: 20180314012419) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -110,6 +110,27 @@ ActiveRecord::Schema.define(version: 20180313182955) do
     t.string   "uid",          limit: 255
   end
 
+  create_table "wallet_actions", force: :cascade do |t|
+    t.integer  "wallet_id",   limit: 4
+    t.string   "action_type", limit: 255
+    t.float    "amount",      limit: 24
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "wallet_actions", ["wallet_id"], name: "index_wallet_actions_on_wallet_id", using: :btree
+
+  create_table "wallets", force: :cascade do |t|
+    t.integer  "owner_id",   limit: 4
+    t.float    "balance",    limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "wallets", ["owner_id"], name: "index_wallets_on_owner_id", using: :btree
+
   add_foreign_key "cpu_loads", "instances"
   add_foreign_key "instance_statistics", "instances"
+  add_foreign_key "wallet_actions", "wallets"
+  add_foreign_key "wallets", "owners"
 end

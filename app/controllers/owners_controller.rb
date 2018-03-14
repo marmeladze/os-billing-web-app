@@ -17,6 +17,8 @@ class OwnersController < ApplicationController
     @volumes = @owner.volumes
     @available = @volumes.where(available: true)
     @attached = @volumes.where(available: false)
+    @wallet = @owner.wallet
+    @wactivities = @wallet.wallet_activities
   end
 
   # GET /owners/new

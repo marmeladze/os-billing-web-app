@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+
+  <tbody id='payments-data'>
+    <% @wactivities.each do |wactivity| %>
+      <tr class="<%= contextualize_action_type(wactivity.action_type) %>">
+        <td><%= action_type_to_sign(wactivity.action_type) %></td>
+        <td><%= wactivity.amount  %></td>
+        <td><%= wactivity.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="well">
+  <p>BALANCE: <%= @wallet.balance.to_f %></p>
+</div>

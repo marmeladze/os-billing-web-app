@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :wallet_actions
+  resources :wallets
   resources :ip_lists
   resources :volumes
   resources :owners
