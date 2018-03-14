@@ -1,0 +1,21 @@
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Address</th>
+      <th>Creation</th>      
+    </tr>
+  </thead>
+
+  <tbody id='routers-data'>
+    <% @routers.each do |router| %>
+      <tr>
+        <td><%= router.name %></td>
+        <td><%= router.status  %></td>
+        <td><%= router.address %></td>
+        <td><%= router.creation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

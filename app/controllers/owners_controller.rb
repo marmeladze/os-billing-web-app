@@ -18,6 +18,10 @@ class OwnersController < ApplicationController
     @available = @volumes.where(available: true)
     @attached = @volumes.where(available: false)
     @wallet = @owner.wallet
+    @routers = @owner.routers
+    @load_balancers = @owner.load_balancers
+    @fips = @owner.fips
+    @firewalls = @owner.firewalls
   end
 
   # GET /owners/new

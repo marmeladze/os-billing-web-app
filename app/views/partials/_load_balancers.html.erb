@@ -1,0 +1,24 @@
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Operating Status</th>
+      <th>Provisioning Status</th>
+      <th>Provider</th>
+      <th>VIP Address</th>
+    </tr>
+  </thead>
+
+  <tbody id='lb-data'>
+    <% @load_balancers.each do |lb| %>
+      <tr>
+        <td><%= lb.name %></td>
+        <td><%= lb.operating_status  %></td>
+        <td><%= lb.provisioning_status %></td>
+        <td><%= lb.provider %></td>
+        <td><%= lb.vip_address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

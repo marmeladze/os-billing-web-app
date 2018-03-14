@@ -1,0 +1,21 @@
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Floating IP</th>
+      <th>Fixed IP</th>
+      <th>Status</th>
+      <th>Creation</th>
+    </tr>
+  </thead>
+
+  <tbody id='fip-data'>
+    <% @fips.each do |fip| %>
+      <tr>
+        <td><%= fip.floating_ip %></td>
+        <td><%= fip.fixed_ip  %></td>
+        <td><%= fip.status %></td>
+        <td><%= fip.creation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

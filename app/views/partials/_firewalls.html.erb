@@ -1,0 +1,19 @@
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Routers</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody id='fws-data'>
+    <% @firewalls.each do |fw| %>
+      <tr>
+        <td><%= fw.name %></td>
+        <td><%= fw.routes.gsub("|", " ")  %></td>
+        <td><%= fw.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
