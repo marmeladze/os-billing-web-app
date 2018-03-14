@@ -1,6 +1,7 @@
 class Wallet < ActiveRecord::Base
   belongs_to :owner
-
+  has_many :wallet_actions
+  
   def notify!
     amt = wallet_actions.last.amount
     case wallet_actions.last.action_type.to_sym
