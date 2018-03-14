@@ -8,12 +8,16 @@
   </thead>
 
   <tbody id='payments-data'>
-    <% @wallet.wallet_activities.each do |wactivity| %>
-      <tr class="<%= contextualize_action_type(wactivity.action_type) %>">
-        <td><%= action_type_to_sign(wactivity.action_type) %></td>
-        <td><%= wactivity.amount  %></td>
-        <td><%= wactivity.created_at %></td>
-      </tr>
+    <% if @wallet.wallet_activities %>
+      <% @wallet.wallet_activities.each do |wactivity| %>
+        <tr class="<%= contextualize_action_type(wactivity.action_type) %>">
+          <td><%= action_type_to_sign(wactivity.action_type) %></td>
+          <td><%= wactivity.amount  %></td>
+          <td><%= wactivity.created_at %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      No payment history found
     <% end %>
   </tbody>
 </table>
