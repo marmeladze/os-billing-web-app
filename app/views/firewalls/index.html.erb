@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Firewalls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tenant uid</th>
+      <th>Status</th>
+      <th>Routers</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @firewalls.each do |firewall| %>
+      <tr>
+        <td><%= firewall.tenant_uid %></td>
+        <td><%= firewall.status %></td>
+        <td><%= firewall.routers %></td>
+        <td><%= firewall.name %></td>
+        <td><%= link_to 'Show', firewall %></td>
+        <td><%= link_to 'Edit', edit_firewall_path(firewall) %></td>
+        <td><%= link_to 'Destroy', firewall, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Firewall', new_firewall_path %>

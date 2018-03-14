@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :load_balancers
+  resources :firewalls
+  resources :fips
+  resources :routers
   resources :wallet_actions
   resources :wallets
   resources :ip_lists

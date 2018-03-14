@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Load Balancers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Operating status</th>
+      <th>Provisioning status</th>
+      <th>Provider</th>
+      <th>Vip address</th>
+      <th>Tenant uid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @load_balancers.each do |load_balancer| %>
+      <tr>
+        <td><%= load_balancer.name %></td>
+        <td><%= load_balancer.operating_status %></td>
+        <td><%= load_balancer.provisioning_status %></td>
+        <td><%= load_balancer.provider %></td>
+        <td><%= load_balancer.vip_address %></td>
+        <td><%= load_balancer.tenant_uid %></td>
+        <td><%= link_to 'Show', load_balancer %></td>
+        <td><%= link_to 'Edit', edit_load_balancer_path(load_balancer) %></td>
+        <td><%= link_to 'Destroy', load_balancer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load balancer', new_load_balancer_path %>

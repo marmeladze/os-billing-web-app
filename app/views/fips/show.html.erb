@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @fip.status %>
+</p>
+
+<p>
+  <strong>Tenant uid:</strong>
+  <%= @fip.tenant_uid %>
+</p>
+
+<p>
+  <strong>Fixed ip:</strong>
+  <%= @fip.fixed_ip %>
+</p>
+
+<p>
+  <strong>Floating ip:</strong>
+  <%= @fip.floating_ip %>
+</p>
+
+<p>
+  <strong>Creation:</strong>
+  <%= @fip.creation %>
+</p>
+
+<%= link_to 'Edit', edit_fip_path(@fip) %> |
+<%= link_to 'Back', fips_path %>

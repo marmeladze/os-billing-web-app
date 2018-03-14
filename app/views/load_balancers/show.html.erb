@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @load_balancer.name %>
+</p>
+
+<p>
+  <strong>Operating status:</strong>
+  <%= @load_balancer.operating_status %>
+</p>
+
+<p>
+  <strong>Provisioning status:</strong>
+  <%= @load_balancer.provisioning_status %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @load_balancer.provider %>
+</p>
+
+<p>
+  <strong>Vip address:</strong>
+  <%= @load_balancer.vip_address %>
+</p>
+
+<p>
+  <strong>Tenant uid:</strong>
+  <%= @load_balancer.tenant_uid %>
+</p>
+
+<%= link_to 'Edit', edit_load_balancer_path(@load_balancer) %> |
+<%= link_to 'Back', load_balancers_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @router.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @router.status %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @router.address %>
+</p>
+
+<p>
+  <strong>Tenant uid:</strong>
+  <%= @router.tenant_uid %>
+</p>
+
+<p>
+  <strong>Creation:</strong>
+  <%= @router.creation %>
+</p>
+
+<%= link_to 'Edit', edit_router_path(@router) %> |
+<%= link_to 'Back', routers_path %>

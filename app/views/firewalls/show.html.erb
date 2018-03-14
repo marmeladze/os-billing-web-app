@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tenant uid:</strong>
+  <%= @firewall.tenant_uid %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @firewall.status %>
+</p>
+
+<p>
+  <strong>Routers:</strong>
+  <%= @firewall.routers %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @firewall.name %>
+</p>
+
+<%= link_to 'Edit', edit_firewall_path(@firewall) %> |
+<%= link_to 'Back', firewalls_path %>

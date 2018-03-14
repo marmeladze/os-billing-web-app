@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Tenant uid</th>
+      <th>Fixed ip</th>
+      <th>Floating ip</th>
+      <th>Creation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fips.each do |fip| %>
+      <tr>
+        <td><%= fip.status %></td>
+        <td><%= fip.tenant_uid %></td>
+        <td><%= fip.fixed_ip %></td>
+        <td><%= fip.floating_ip %></td>
+        <td><%= fip.creation %></td>
+        <td><%= link_to 'Show', fip %></td>
+        <td><%= link_to 'Edit', edit_fip_path(fip) %></td>
+        <td><%= link_to 'Destroy', fip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fip', new_fip_path %>

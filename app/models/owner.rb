@@ -17,4 +17,20 @@ class Owner < ActiveRecord::Base
     wallet.balance
   end
 
+  def fips
+    Fip.where(tenant_uid: tenant)
+  end
+
+  def routers
+    Router.where(tenant_uid: tenant)
+  end
+
+  def firewalls
+    Firewall.where(tenant_uid: tenant)    
+  end
+
+  def load_balancers
+    LoadBalancer.where(tenant_uid: tenant)    
+  end
+
 end

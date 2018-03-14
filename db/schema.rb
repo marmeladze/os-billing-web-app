@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314012419) do
+ActiveRecord::Schema.define(version: 20180314173905) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -32,6 +32,27 @@ ActiveRecord::Schema.define(version: 20180314012419) do
   end
 
   add_index "cpu_loads", ["instance_id"], name: "index_cpu_loads_on_instance_id", using: :btree
+
+  create_table "fips", force: :cascade do |t|
+    t.string   "status",      limit: 255
+    t.string   "tenant_uid",  limit: 255
+    t.string   "fixed_ip",    limit: 255
+    t.string   "floating_ip", limit: 255
+    t.datetime "creation"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "fips", ["floating_ip"], name: "index_fips_on_floating_ip", unique: true, using: :btree
+
+  create_table "firewalls", force: :cascade do |t|
+    t.string   "tenant_uid", limit: 255
+    t.string   "status",     limit: 255
+    t.text     "routers",    limit: 65535
+    t.string   "name",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "instance_bills", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -61,6 +82,12 @@ ActiveRecord::Schema.define(version: 20180314012419) do
     t.integer  "cpu",        limit: 4
     t.integer  "ram",        limit: 4
     t.integer  "disk",       limit: 4
+    t.string   "flavor",     limit: 255
+    t.string   "image",      limit: 255
+    t.string   "zone",       limit: 255
+    t.string   "status",     limit: 255
+    t.string   "state",      limit: 255
+    t.datetime "creation"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "name",       limit: 255
@@ -68,13 +95,28 @@ ActiveRecord::Schema.define(version: 20180314012419) do
     t.string   "owner_uid",  limit: 255
   end
 
+  add_index "instances", ["name"], name: "index_instances_on_name", unique: true, using: :btree
+
   create_table "ip_lists", force: :cascade do |t|
     t.string   "address",      limit: 255
-    t.string   "type",         limit: 255
+    t.string   "list_type",    limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "instance_uid", limit: 255
   end
+
+  create_table "load_balancers", force: :cascade do |t|
+    t.string   "name",                limit: 255
+    t.string   "operating_status",    limit: 255
+    t.string   "provisioning_status", limit: 255
+    t.string   "provider",            limit: 255
+    t.string   "vip_address",         limit: 255
+    t.string   "tenant_uid",          limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "load_balancers", ["vip_address"], name: "index_load_balancers_on_vip_address", unique: true, using: :btree
 
   create_table "owners", force: :cascade do |t|
     t.string   "uid",        limit: 255
@@ -84,6 +126,20 @@ ActiveRecord::Schema.define(version: 20180314012419) do
     t.datetime "updated_at",             null: false
     t.string   "name",       limit: 255
   end
+
+  add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
+
+  create_table "routers", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "status",     limit: 255
+    t.string   "address",    limit: 255
+    t.string   "tenant_uid", limit: 255
+    t.datetime "creation"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "routers", ["address"], name: "index_routers_on_address", unique: true, using: :btree
 
   create_table "tenant_bills", force: :cascade do |t|
     t.integer  "tenant_id",    limit: 4

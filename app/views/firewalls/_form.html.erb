@@ -1,0 +1,33 @@
+<%= form_for(@firewall) do |f| %>
+  <% if @firewall.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@firewall.errors.count, "error") %> prohibited this firewall from being saved:</h2>
+
+      <ul>
+      <% @firewall.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tenant_uid %><br>
+    <%= f.text_field :tenant_uid %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :routers %><br>
+    <%= f.text_area :routers %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

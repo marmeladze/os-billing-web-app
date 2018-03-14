@@ -7,5 +7,6 @@ class CreateOwners < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :owners, :email, unique: true
   end
 end
