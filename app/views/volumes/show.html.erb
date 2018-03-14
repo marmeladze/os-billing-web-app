@@ -19,12 +19,12 @@
 
   <p>
     <strong>Instance:</strong>
-    <%= @volume.instance.name %>
+    <%= @volume.instance.try(:name) %>
   </p>
 
   <p>
     <strong>User:</strong>
-    <%= @volume.owner.name %>
+    <%= @volume.owner.try(:name) %>
   </p>
 </div>  
 </div>
