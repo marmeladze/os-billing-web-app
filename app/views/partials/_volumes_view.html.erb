@@ -13,7 +13,7 @@
   <tbody id='volume-data'>
     <% instances.each do |instance| %>
       <tr>
-        <td><%= instance.uid %></td>
+        <td><%= link_to instance.uid, volume_path(instance) %></td>
         <td><%= instance.amount  %></td>
         <td><%= instance.volume_type  %></td>
         <td><%= instance.available ? "No" : "Yes"  %></td> 

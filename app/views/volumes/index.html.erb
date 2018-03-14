@@ -20,16 +20,11 @@
         <td><%= volume.volume_type %></td>
         <td><%= volume.amount %></td>
         <td><%= volume.available %></td>
-        <td><%= volume.instance %></td>
-        <td><%= volume.user %></td>
+        <td><%= link_to volume.instance, instance_path(volume.instance) %></td>
+        <td><%= link_to volume.owner, owner_path(volume.owner) %></td>
         <td><%= link_to 'Show', volume %></td>
-        <td><%= link_to 'Edit', edit_volume_path(volume) %></td>
-        <td><%= link_to 'Destroy', volume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Volume', new_volume_path %>
