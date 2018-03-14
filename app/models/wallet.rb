@@ -13,11 +13,11 @@ class Wallet < ActiveRecord::Base
   end
 
   def deposit amount
-    update_attributes!(:balance, balance.to_f - amount)
+    update_attributes!(balance: balance.to_f + amount)
   end
 
   def checkout amount
-    update_attributes!(:balance, balance.to_f - amount)
+    update_attributes!(balance: balance.to_f - amount)
   end
 
 end
