@@ -1,6 +1,6 @@
 class Wallet < ActiveRecord::Base
   belongs_to :owner
-  has_many :wallet_actions
+  has_many :wallet_actions, inverse_of: :wallet
   
   def notify!
     amt = wallet_actions.last.amount
