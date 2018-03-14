@@ -8,8 +8,8 @@
   </thead>
 
   <tbody id='payments-data'>
-    <% if @wallet.wallet_activities %>
-      <% @wallet.wallet_activities.each do |wactivity| %>
+    <% if @wallet.wallet_actions %>
+      <% @wallet.wallet_actions.each do |wactivity| %>
         <tr class="<%= contextualize_action_type(wactivity.action_type) %>">
           <td><%= action_type_to_sign(wactivity.action_type) %></td>
           <td><%= wactivity.amount  %></td>
