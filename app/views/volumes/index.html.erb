@@ -21,7 +21,7 @@
         <td><%= volume.amount %></td>
         <td><%= volume.available %></td>
         <td><%= link_to volume.instance, instance_path(volume.instance) %></td>
-        <td><%= link_to volume.owner, owner_path(volume.owner) %></td>
+        <td><%= volume.owner %></td>
         <td><%= link_to 'Show', volume %></td>
       </tr>
     <% end %>
