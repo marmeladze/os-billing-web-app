@@ -11,7 +11,7 @@
     <% @firewalls.each do |fw| %>
       <tr>
         <td><%= fw.name %></td>
-        <td><%= fw.routes.gsub("|", " ")  %></td>
+        <td><%= fw.routers.gsub("|", " ")  %></td>
         <td><%= fw.status %></td>
       </tr>
     <% end %>
