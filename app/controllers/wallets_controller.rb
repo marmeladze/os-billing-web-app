@@ -14,9 +14,7 @@ class WalletsController < ApplicationController
 
   def tenant
     @wallet = Wallet.joins(:owner).where("owners.tenant = ?", params[:tenant])
-    respond_to do |format|
-      format.json { render :show, location: @wallet }
-    end
+    render json: @wallet 
   end
   # GET /wallets/new
   def new
