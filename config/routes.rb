@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :fips
   resources :routers
   resources :wallet_actions
-  resources :wallets
+  
+  resources :wallets do 
+    get 'tenant', on: :member
+  end
+  
   resources :ip_lists
   resources :volumes
   resources :owners
