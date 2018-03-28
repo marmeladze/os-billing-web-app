@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   resources :routers
   resources :wallet_actions
   
-  resources :wallets do 
-    get 'tenant', on: :member
-  end
+  resources :wallets
   
   resources :ip_lists
   resources :volumes
@@ -20,6 +18,8 @@ Rails.application.routes.draw do
   resources :tenant_bills
   resources :instance_bills
   resources :bill_units
+
+  get 'wallets/tenant/:uid' => 'wallet#tenant'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
