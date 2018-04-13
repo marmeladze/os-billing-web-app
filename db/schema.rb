@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314173905) do
+ActiveRecord::Schema.define(version: 20180413153036) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -52,6 +52,28 @@ ActiveRecord::Schema.define(version: 20180314173905) do
     t.string   "name",       limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "flavors", force: :cascade do |t|
+    t.integer  "os_id",      limit: 4
+    t.string   "name",       limit: 255
+    t.integer  "ram",        limit: 4
+    t.integer  "disk",       limit: 4
+    t.integer  "vcpus",      limit: 4
+    t.boolean  "is_public"
+    t.boolean  "enabled"
+    t.float    "price",      limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "uid",        limit: 4
+    t.string   "name",       limit: 255
+    t.string   "status",     limit: 255
+    t.float    "price",      limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "instance_bills", force: :cascade do |t|
