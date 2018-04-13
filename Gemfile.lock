@@ -61,19 +61,37 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     debug_inspector (0.0.3)
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
+    excon (0.62.0)
     execjs (2.7.0)
     ffi (1.9.23)
+    fog-core (1.45.0)
+      builder
+      excon (~> 0.58)
+      formatador (~> 0.2)
+    fog-json (1.0.2)
+      fog-core (~> 1.0)
+      multi_json (~> 1.10)
+    fog-openstack (0.1.25)
+      fog-core (~> 1.40)
+      fog-json (>= 1.0)
+      ipaddress (>= 0.8)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
+    formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     groupdate (3.2.0)
       activesupport (>= 3)
     hightop (0.2.0)
       activerecord
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -87,13 +105,19 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     mysql2 (0.4.10)
+    netrc (0.11.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    openstack (3.3.17)
+      json
     puma (3.11.0)
     rack (1.6.9)
     rack-test (0.6.3)
@@ -127,6 +151,12 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    ruby-keystone-client (1.0.0)
+      rest-client
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -160,6 +190,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -177,14 +210,17 @@ DEPENDENCIES
   byebug
   chartkick
   coffee-rails (~> 4.1.0)
+  fog-openstack
   font-awesome-rails
   groupdate
   hightop
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
+  openstack
   puma
   rails (= 4.2.8)
+  ruby-keystone-client
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

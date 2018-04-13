@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :bill_units
 
   get 'wallets/tenant/:tenant' => 'wallets#tenant'
+  get 'wallets/user/:user' => 'wallets#user'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
