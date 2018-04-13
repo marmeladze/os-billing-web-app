@@ -12,6 +12,11 @@ class WalletsController < ApplicationController
   def show
   end
 
+  def user
+    @wallet = Wallet.joins(:owner).where("owners.uid = ?", params[:user])
+    render json: @wallet
+  end
+
   def tenant
     @wallet = Wallet.joins(:owner).where("owners.tenant = ?", params[:tenant])
     render json: @wallet 
