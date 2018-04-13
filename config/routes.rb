@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :images
+  resources :flavors
   resources :load_balancers
   resources :firewalls
   resources :fips

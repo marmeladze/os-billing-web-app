@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Os:</strong>
+  <%= @flavor.os_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @flavor.name %>
+</p>
+
+<p>
+  <strong>Ram:</strong>
+  <%= @flavor.ram %>
+</p>
+
+<p>
+  <strong>Disk:</strong>
+  <%= @flavor.disk %>
+</p>
+
+<p>
+  <strong>Vcpus:</strong>
+  <%= @flavor.vcpus %>
+</p>
+
+<p>
+  <strong>Is public:</strong>
+  <%= @flavor.is_public %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @flavor.enabled %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @flavor.price %>
+</p>
+
+<%= link_to 'Edit', edit_flavor_path(@flavor) %> |
+<%= link_to 'Back', flavors_path %>

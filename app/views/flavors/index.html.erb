@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Flavors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Os</th>
+      <th>Name</th>
+      <th>Ram</th>
+      <th>Disk</th>
+      <th>Vcpus</th>
+      <th>Is public</th>
+      <th>Enabled</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flavors.each do |flavor| %>
+      <tr>
+        <td><%= flavor.os_id %></td>
+        <td><%= flavor.name %></td>
+        <td><%= flavor.ram %></td>
+        <td><%= flavor.disk %></td>
+        <td><%= flavor.vcpus %></td>
+        <td><%= flavor.is_public %></td>
+        <td><%= flavor.enabled %></td>
+        <td><%= flavor.price %></td>
+        <td><%= link_to 'Show', flavor %></td>
+        <td><%= link_to 'Edit', edit_flavor_path(flavor) %></td>
+        <td><%= link_to 'Destroy', flavor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flavor', new_flavor_path %>
