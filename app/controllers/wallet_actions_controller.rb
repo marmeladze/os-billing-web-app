@@ -1,4 +1,5 @@
 class WalletActionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_wallet_action, only: [:show, :edit, :update, :destroy]
 
   # GET /wallet_actions
