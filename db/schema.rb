@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414104524) do
+ActiveRecord::Schema.define(version: 20180414144754) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24

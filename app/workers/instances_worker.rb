@@ -9,7 +9,7 @@ class InstancesWorker
   			instance.ram = flavor.ram
   			instance.flavor = flavor.name
         instance.disk  = flavor.disk
-        instance.image = COMPUTE.images.find{|e| e.id == server.image["id"]}.name
+        instance.image = COMPUTE.images.find{|e| e.id == server.image["id"]}.try(:name)
   			instance.zone = server.availability_zone
         instance.status = server.state
         instance.state = server.os_ext_sts_power_state
@@ -17,6 +17,7 @@ class InstancesWorker
         instance.name = server.name
         instance.tenant_id = server.tenant_id
         instance.owner_uid = server.user_id
+        instance.save
   		end
   	end
   end

@@ -62,6 +62,10 @@ class InstancesController < ApplicationController
   end
 
   private
+    def set_related
+      @flavors = Flavor.usable.pluck(:name, :os_id)
+    end
+      
     # Use callbacks to share common setup or constraints between actions.
     def set_instance
       @instance = Instance.find(params[:id])
@@ -69,6 +73,6 @@ class InstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instance_params
-      params.require(:instance).permit(:uid, :cpu, :ram, :disk)
+      params.require(:instance).permit(:name, :flavor_id, :image_id)
     end
 end

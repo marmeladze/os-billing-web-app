@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+
   resources :images
   resources :flavors
+
   resources :load_balancers
   resources :firewalls
   resources :fips
@@ -21,6 +26,9 @@ Rails.application.routes.draw do
   resources :instance_bills
   resources :bill_units
 
+
+  
+  get 'flavors/fetch/:os_id' => 'flavors#fetch'
   get 'wallets/tenant/:tenant' => 'wallets#tenant'
   get 'wallets/user/:user' => 'wallets#user'
   # The priority is based upon order of creation: first created -> highest priority.
