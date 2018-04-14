@@ -1,10 +1,15 @@
 class OwnersController < ApplicationController
+  # before_action :logged_in_user
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
-
   # GET /owners
   # GET /owners.json
   def index
     @owners = Owner.all
+    OwnersWorker.perform_async
+    FlavorsWorker.perform_async
+    ImagesWorker.perform_async
+    InstancesWorker.perform_async
+    VolumesWorker.perform_async
   end
 
   # GET /owners/1

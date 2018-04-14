@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413153036) do
+ActiveRecord::Schema.define(version: 20180414144754) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -141,12 +141,13 @@ ActiveRecord::Schema.define(version: 20180413153036) do
   add_index "load_balancers", ["vip_address"], name: "index_load_balancers_on_vip_address", unique: true, using: :btree
 
   create_table "owners", force: :cascade do |t|
-    t.string   "uid",        limit: 255
-    t.string   "email",      limit: 255
-    t.string   "tenant",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "name",       limit: 255
+    t.string   "uid",                limit: 255
+    t.string   "email",              limit: 255
+    t.string   "tenant",             limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "name",               limit: 255
+    t.string   "default_project_id", limit: 255
   end
 
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree

@@ -4,7 +4,7 @@ class FlavorsController < ApplicationController
   # GET /flavors
   # GET /flavors.json
   def index
-    @flavors = Flavor.all
+    @flavors = Flavor.usables
   end
 
   # GET /flavors/1
@@ -12,6 +12,10 @@ class FlavorsController < ApplicationController
   def show
   end
 
+  def fetch
+    @flavor = Flavor.find_by(os_id: params[:os_id])
+    render json: @flavor
+  end
   # GET /flavors/new
   def new
     @flavor = Flavor.new
