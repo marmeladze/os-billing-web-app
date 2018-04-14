@@ -16,7 +16,7 @@ class InstancesWorker
         instance.creation = server.created
         instance.name = server.name
         instance.tenant_id = server.tenant_id
-        instance.owner_uid = server.owner
+        instance.owner_uid = server.user_id
   		end
   	end
   end

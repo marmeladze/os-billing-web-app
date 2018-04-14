@@ -5,6 +5,10 @@ class OwnersController < ApplicationController
   # GET /owners.json
   def index
     @owners = Owner.all
+    OwnersWorker.perform_async
+    FlavorsWorker.perform_async
+    ImagesWorker.perform_async
+    InstancesWorker.perform_async
   end
 
   # GET /owners/1
