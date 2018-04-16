@@ -12,6 +12,13 @@ class VolumesController < ApplicationController
   def show
   end
 
+  def price
+    t = params[:type]
+    s = params[:size].to_i
+    t = Volume::UNIT_PRICES[t]
+    render json: {price: (t*s).round(3)}
+  end
+
   # GET /volumes/new
   def new
     @volume = Volume.new
