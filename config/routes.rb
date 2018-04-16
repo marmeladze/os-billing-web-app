@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :bill_units
 
 
-  
+  get 'volumes/price_for/:type/:size' => 'volumes#price'
   get 'flavors/fetch/:os_id' => 'flavors#fetch'
   get 'wallets/tenant/:tenant' => 'wallets#tenant'
   get 'wallets/user/:user' => 'wallets#user'
