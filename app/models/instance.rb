@@ -1,4 +1,6 @@
 class Instance < ActiveRecord::Base
+  attr_accessor :flavor_id, :image_id
+
   has_many :cpu_loads
 
   def owner

@@ -10,6 +10,7 @@ class OwnersController < ApplicationController
     ImagesWorker.perform_async
     InstancesWorker.perform_async
     VolumesWorker.perform_async
+    NetworkWorker.perform_async
   end
 
   # GET /owners/1

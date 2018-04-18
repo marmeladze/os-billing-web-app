@@ -4,5 +4,5 @@ class Flavor < ActiveRecord::Base
 
   scope :enabled, -> { where(enabled: true) }
   scope :publics, -> { where(is_public: true) }
-  scope :usables, -> { enabled.publics }
+  scope :usable, -> { enabled.publics }
 end

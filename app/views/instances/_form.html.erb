@@ -16,17 +16,14 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :cpu %><br>
-    <%= f.number_field :cpu %>
+    <%= f.label :flavor %><br>
+    <%= f.select :flavor_id, @flavors, prompt: "Choose one" %>
   </div>
   <div class="field">
-    <%= f.label :ram %><br>
-    <%= f.number_field :ram %>
+    <%= f.label :image %><br>
+    <%= f.select :image_id, @images, prompt: "Choose one" %>
   </div>
-  <div class="field">
-    <%= f.label :disk %><br>
-    <%= f.number_field :disk %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
