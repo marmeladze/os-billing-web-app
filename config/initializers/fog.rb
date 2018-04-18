@@ -9,4 +9,4 @@ params = {
 
 COMPUTE  = Fog::Compute::OpenStack.new(params)
 IDENTITY = Fog::Identity::OpenStack.new(params) 
-
+NETWORK  = Fog::Network::OpenStack.new(params)

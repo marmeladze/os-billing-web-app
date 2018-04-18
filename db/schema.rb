@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414144754) do
+ActiveRecord::Schema.define(version: 20180417114632) do
 
   create_table "bill_units", force: :cascade do |t|
     t.float    "vcpu",       limit: 24
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180414144754) do
     t.datetime "creation"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "uid",         limit: 255
   end
 
   add_index "fips", ["floating_ip"], name: "index_fips_on_floating_ip", unique: true, using: :btree
@@ -68,7 +69,7 @@ ActiveRecord::Schema.define(version: 20180414144754) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer  "uid",        limit: 4
+    t.string   "uid",        limit: 255
     t.string   "name",       limit: 255
     t.string   "status",     limit: 255
     t.float    "price",      limit: 24
@@ -160,6 +161,7 @@ ActiveRecord::Schema.define(version: 20180414144754) do
     t.datetime "creation"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "uid",        limit: 255
   end
 
   add_index "routers", ["address"], name: "index_routers_on_address", unique: true, using: :btree
