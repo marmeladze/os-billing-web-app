@@ -4,7 +4,6 @@
 Web frontend for nova/glance/cinder statistics and usage with billing utilities. 
 Backed by cron tasks
 
-Currently running on [10.10.41.21:3000]
 
 
 
