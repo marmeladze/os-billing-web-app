@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  operating_status: MyString
+  provisioning_status: MyString
+  provider: MyString
+  vip_address: MyString
+  tenant_uid: MyString
+
+two:
+  name: MyString
+  operating_status: MyString
+  provisioning_status: MyString
+  provider: MyString
+  vip_address: MyString
+  tenant_uid: MyString

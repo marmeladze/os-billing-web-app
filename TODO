@@ -1,0 +1,51 @@
+- Attach console per isntance
++  Disk types
++ Letting users to launch instances based on flavor/fixed zone attaching floating ip
++ User balance
+
++ User
+	-- instances
+	-- volumes
+	-- volume status
+	-- instance status
+	-- volume statistics
+	-- instance statistics
+	-- actions
+
+
+pass = "k3st0ne2017ZEtka"
+auth_url = "http://10.10.26.140:5000/v3"
+
+
+
+from novaclient import client as novaclient
+from novaclient.v2.client import usage
+from ceilometerclient import client as ceiloclient
+import keystoneclient.v2_0.client as ksclient
+ 
+
+>>> cclient = ccli.Client(2, 'admin', creds['password'], 'admin', creds['auth_url'])
+>>> cclient.volumes.list()
+[<Volume: 6651ab12-a87c-4277-be8e-f6b419a2b261>, <Volume: 315bc85e-1ef2-49e2-a2c1-60a6923589d1>, <Volume: aa17d677-f046-4952-8e5b-8768e6714226>, <Volume: c1ab5a6a-9d73-4990-9311-616d26b5aa95>, <Volume: f423841a-a974-4786-ae5c-9cf34e5b3e30>, <Volume: 206f9311-9e64-4590-86de-1588715065b9>, <Volume: 8481734c-f829-4945-8280-4071df5db6b1>, <Volume: 50155849-aa00-4b03-881c-9d0bda65b606>, <Volume: 188aeca5-e7dc-4381-acf0-99142afbe316>]
+>>> vols = cclient.volumes.list()
+
+
+creds = {
+	'username': 'admin', 
+    'project_name': 'admin', 
+    'user_domain_id': 'default', 
+    'auth_url': 'http://10.10.26.140:5000/v3', 
+    'password': 'k3st0ne2017ZEtka', 
+    'project_domain_id': 'default'
+}
+creds['password'] = 'k3st0ne2017ZEtka'
+creds['auth_url'] = 'http://10.10.26.140:5000/v3'
+creds
+{'username': 'admin', 'project_name': 'admin', 'user_domain_id': 'default', 'auth_url': 'http://10.10.26.140:5000/v3', 'password': 'k3st0ne2017ZEtka', 'project_domain_id': 'default'}
+nova = novaclient.Client(2, **creds)
+nova.servers.list()
+
+
+start = datetime.datetime.now() - datetime.timedelta(minutes=60)
+end   = datetime.datetime.now()
+usg = nova.usage.get(tenant_id, start, end)

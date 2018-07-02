@@ -1,0 +1,239 @@
+
+from novaclient import client as novaclient
+from novaclient.v2.client import usage
+from ceilometerclient import client as ceiloclient
+import keystoneclient.v2_0.client as ksclient
+from cinderclient.v3 import client as cclient
+
+import contextlib
+import pymysql as mysql 
+import datetime
+
+
+creds = {
+    'username': 'admin', 
+    'project_name': 'admin', 
+    'user_domain_id': 'default', 
+    'auth_url': 'http://10.10.26.140:5000/v3', 
+    'password': 'k3st0ne2017ZEtka', 
+    'project_domain_id': 'default'
+}
+
+db_creds =  {
+    'user': 'marmeladze',
+    'password': 'geometry123',
+    'host'    : 'localhost',
+    'database': 'billing_dev'
+}
+
+ccreds = {
+    'username': 'admin',
+    'password': 'k3st0ne2017ZEtka',
+    'tenant_name': 'admin',
+    'auth_url': 'http://10.10.26.140:5000/v3'
+}
+
+kcreds = {
+    'username':'admin',
+    'auth_url': 'http://10.10.26.140:35357/v2.0',
+    'password': 'k3st0ne2017ZEtka',
+    'tenant_name': 'admin'
+}
+
+cindercreds = {
+    'username':'admin',
+    'auth_url': 'http://10.10.26.140:35357/v2.0',
+    'password': 'k3st0ne2017ZEtka',
+    'tenant_name': 'admin'    
+}
+
+@contextlib.contextmanager
+def db(**kwargs):
+    conn = mysql.connect(cursorclass=mysql.cursors.DictCursor, **kwargs)
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+
+ccli = cclient.Client('admin', 'k3st0ne2017ZEtka', 'admin', 'http://10.10.26.140:35357/v2.0')
+nova = novaclient.Client(2, **creds)
+cc = ceiloclient.get_client(2, **ccreds)
+kc = ksclient.Client(**kcreds)
+
+def query_builder(field, operand, value):
+    return {
+        'field': field,
+        'op': operand,
+        'value': value 
+    }
+
+def get_average_cpu_usage(instance_id):
+    query = query_builder('resource', 'eq', instance_id)
+    stat = cc.statistics.list(meter_name='cpu_util', q=[query])
+    return stat
+
+def get_last_cpu_load(instance_id):
+    query = query_builder('resource', 'eq', instance_id)
+    stat = cc.samples.list(meter_name='cpu_util', q=[query])
+    return stat
+
+def get_outgoing_bytes(instance_id):
+    query = query_builder('resource', 'eq', instance_id)
+    stat = cc.samples.list(meter_name='network.outgoing.bytes', q=[query])
+    return stat
+
+def find_flavor_by_name(flavor_name):
+    flavor = nova.flavors.find(name=flavor_name)
+    return flavor
+
+def find_flavor_by_id(pk):
+    flavor = nova.flavors.get(pk)
+    return flavor
+
+def list_all_users():
+    kc.users.list()
+
+volumes = ccli.volumes.list(search_opts = {'all_tenants': 1})
+servers = nova.servers.list(search_opts={'all_tenants': 1})
+instance_owner_ids = list(set([s.user_id for s in servers]))
+
+with db(**db_creds) as cnx:
+    cur = cnx.cursor()
+    cur.execute("SELECT uid FROM instances")
+    data = cur.fetchall()
+
+uids = map(lambda e: e['uid'], data)
+
+with db(**db_creds) as cnx:
+    cur = cnx.cursor()
+    cur.execute("SELECT uid FROM owners")
+    owners = cur.fetchall()
+
+oids = map(lambda e: e['uid'], owners)
+
+for owner_id in instance_owner_ids:
+    if owner_id not in oids:
+        try:
+            owner = kc.users.find(id = owner_id)
+            uid = owner.id
+            email = owner.email
+            name = owner.name
+            tenant = owner.to_dict().get('default_project_id', 'None')
+            with db(**db_creds) as cnx:
+                cur = cnx.cursor()
+                sql = "INSERT INTO owners(uid, email, tenant, name, created_at, updated_at) VALUES(%s, %s, %s, %s, NOW(), NOW())"
+                try:
+                    cur.execute(sql, (uid, email, tenant, name))
+                    cnx.commit()
+                except Exception as e:
+                    print e
+        except Exception as e:
+            print e
+
+for vol in volumes:
+    uid = vol.id
+    typ = vol.volume_type
+    amount = vol.size
+    available = True if len(vol.attachments) < 1 else False
+    creation  = vol.created_at
+    owner_uid  = vol.user_id
+    instance_uid = "" if len(vol.attachments) < 1 else vol.attachments[0]['server_id']
+    with db(**db_creds) as cnx:
+        cur = cnx.cursor()
+        sql = "INSERT INTO volumes(uid, volume_type, amount, available, creation, owner_uid, instance_uid, created_at, updated_at) VALUES(%s, %s, %s, %s, %s, %s, %s, NOW(), NOW())"
+        try:
+            cur.execute(sql, (uid, typ, amount, available, creation, owner_uid, instance_uid))
+            cnx.commit()
+        except Exception as e:
+            print e    
+
+for server in servers:
+    uid  = server.id
+    name = server.name
+    cpu  = int(find_flavor_by_id(server.flavor['id']).vcpus)
+    ram  = int(find_flavor_by_id(server.flavor['id']).ram)
+    disk = int(find_flavor_by_id(server.flavor['id']).disk)
+    addresses = [(l['addr'], l['OS-EXT-IPS:type']) for l in  server.addresses.values()[0] if l['OS-EXT-IPS:type'] == 'floating']
+    for add in addresses:
+        with db(**db_creds) as cnx:
+            cur = cnx.cursor()
+            sql = "INSERT INTO ip_lists(instance_uid, address, type, created_at, updated_at) VALUES(%s, %s, %s, NOW(), NOW())"
+            try:
+                cur.execute(sql, (uid, add[1], add[2]))
+                cnx.commit()
+            except Exception as e:
+                print e
+
+
+    # s = get_last_cpu_load(uid)
+    # if len(s) > 0:
+    #     sample = s[0]
+    #     perc = sample.counter_volume
+    #     observed = sample.recorded_at
+
+    created = server.created
+    zone = server.__dict__['OS-EXT-AZ:availability_zone']
+    state = server.__dict__['OS-EXT-STS:power_state']
+    status = server.status
+    tenant_id = server.tenant_id
+    owner_id = server.user_id
+    with db(**db_creds) as cnx:
+        cur = cnx.cursor()
+        cur.execute("SELECT id FROM owners where uid = %s", (owner_id))
+        c = cur.fetchone()['id']
+
+    if uid not in uids:
+        with db(**db_creds) as cnx:
+            cur = cnx.cursor()
+            sql = "INSERT INTO instances(name, tenant_id, uid, cpu, ram, disk, owner_id, created_at, updated_at) VALUES(%s, %s, %s, %s,  %s, %s, NOW(), NOW())"
+            try:
+                cur.execute(sql, (name, tenant_id, uid, cpu, ram, disk, c))
+                cnx.commit()
+            except Exception as e:
+                print e
+
+    with db(**db_creds) as cnx:
+        cur = cnx.cursor()
+        cur.execute("SELECT id FROM instances WHERE uid = %s", (uid))
+        c = cur.fetchone()['id']
+
+        sql = "INSERT INTO instance_details(zone, state, status, created, instance_id, created_at, updated_at) VALUES(%s, %s, %s, %s, %s,  NOW(), NOW())"
+        try:
+            cur.execute(sql, (zone, state, status, created, c))
+            cnx.commit()
+        except Exception as e:
+            print e
+
+        # sql = """INSERT INTO cpu_loads(instance_id, percentage, observed_at, created_at, updated_at)
+        # VALUES(%s, %s, %s, NOW(), NOW())"""
+
+        # try:
+        #     cur.execute(sql, (c, perc, observed))
+        #     cnx.commit()
+        # except Exception as e:
+        #     print e
+
+        if state >=4:
+            start = datetime.datetime.now() - datetime.timedelta(minutes=243)
+            end   = datetime.datetime.now() - datetime.timedelta(minutes=242)
+            usg = nova.usage.get(tenant_id, start, end)
+            print usg.to_dict()
+            total_hours = usg.total_hours
+            total_local_gb = usg.total_local_gb_usage
+            total_memory_mb = usg.total_memory_mb_usage
+            total_vcpus_usage = usg.total_vcpus_usage
+
+            sql = """INSERT INTO instance_statistics(total_hours, total_memory_mb_usage, total_local_gb_usage, total_vcpus_usage, instance_id, created_at, updated_at) 
+            VALUES(%s, %s, %s, %s, %s, NOW(), NOW())"""
+
+            try:
+                cur.execute(sql, (total_hours, total_local_gb, total_memory_mb, total_vcpus_usage, c))
+                cnx.commit()
+            except Exception as e:
+                print e
+
+
+
+
+

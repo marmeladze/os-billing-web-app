@@ -1,0 +1,21 @@
+1) Billing admin main dashboard, list of users with filters including availability zones. 
+[nova zones/list users on that zone]
+
+2) enter into selected user I see following information: list of running virtual machines with filetr for (total,shutdown,suspended,running) default is running
+ 
+3) separate part for volumes within user: list of volumes, in use and available
+
+4) part for floating ip address, available and attached to particular instance
+
+5) balance, payment history
+
+Virtual machine baxanda gorduyun melumat:
+Mashinin adi/flavor/image/volume attached/private ipaddress/ floating ip address
+
+Volume baxanda: volume type, amount in GB, state (available or in use)
+
+Floating ip address, released, available in usr
+
+volume sectionda da filter olmalidir, yaniki gore bilim volume history
+
+

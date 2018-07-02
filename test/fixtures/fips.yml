@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  tenant_uid: MyString
+  fixed_ip: MyString
+  floating_ip: MyString
+  creation: 2018-03-14 20:41:33
+
+two:
+  status: MyString
+  tenant_uid: MyString
+  fixed_ip: MyString
+  floating_ip: MyString
+  creation: 2018-03-14 20:41:33

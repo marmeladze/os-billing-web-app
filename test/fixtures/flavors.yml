@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  os_id: 1
+  name: MyString
+  ram: 1
+  disk: 1
+  vcpus: 1
+  is_public: false
+  enabled: false
+  price: 1.5
+
+two:
+  os_id: 1
+  name: MyString
+  ram: 1
+  disk: 1
+  vcpus: 1
+  is_public: false
+  enabled: false
+  price: 1.5
